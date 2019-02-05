@@ -31,6 +31,8 @@ framerate = 60
 
 # Load sprites
 character = pygame.image.load('sprites/entities/fox/fox_base.png')
+character_width, character_height = character.get_rect().size
+
 grass = pygame.image.load('sprites/environment/forest/grass.png')
 dirt = pygame.image.load('sprites/environment/forest/dirt.png')
 stone = pygame.image.load('sprites/environment/forest/stone.png')
@@ -73,6 +75,16 @@ while not game_exit:
 
             if event.key == pygame.K_UP or event.key == pygame.K_DOWN:
                 pass
+
+    if x < 0:
+        x = 0
+    if x > display_width - character_width:
+        x = display_width - character_width
+
+    if y < 0:
+        y = 0
+    if y > display_height - character_height:
+        y = display_height - character_height
 
     game_display.fill(sky_blue)
     player(x, y)
