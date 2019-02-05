@@ -47,6 +47,14 @@ def player(x, y):
     game_display.blit(character, (x, y))
 
 
+# Temp map
+# Grass
+map_1 = {
+    grass: [
+        (0, 0),
+    ]
+}
+
 def display_image(img, x, y):
     game_display.blit(img, (x, y))
 
