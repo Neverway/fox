@@ -32,6 +32,7 @@ character = pygame.image.load('sprites/entities/fox/fox_base.png')
 def player(x, y):
     game_display.blit(character, (x, y))
 
+
 # Game loop
 game_exit = False
 while not game_exit:
