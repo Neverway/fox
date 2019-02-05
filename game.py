@@ -34,10 +34,11 @@ def player(x, y):
 
 
 # Game loop
+x = (display_width * 0.45)
+y = (display_height * 0.8)
 game_exit = False
+
 while not game_exit:
-    x = (display_width * 0.45)
-    y = (display_height * 0.8)
     x_change = 0
     y_change = 0
 
