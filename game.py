@@ -24,6 +24,10 @@ red = (255, 0, 0)
 green = (0, 255, 0)
 blue = (0, 0, 255)
 
+# Add clock
+clock = pygame.time.Clock()
+framerate = 60
+
 # Load sprites
 character = pygame.image.load('sprites/entities/fox/fox_base.png')
 
@@ -68,5 +72,6 @@ while not game_exit:
     game_display.fill(black)
     player(x, y)
     pygame.display.update()
+    clock.tick(framerate)
 
 pygame.quit()
