@@ -44,6 +44,28 @@ while not game_exit:
         if event.type == pygame.QUIT:
             game_exit = True
 
+            # Left right movement
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_LEFT:
+                    x_change = -0.015
+                if event.key == pygame.K_RIGHT:
+                    x_change = 0.015
+
+            if event.type == pygame.KEYUP:
+                if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
+                    x_change = 0
+
+            # Up Down movement
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_UP:
+                    y_change = -0.015
+                if event.key == pygame.K_DOWN:
+                    y_change = 0.015
+
+            if event.type == pygame.KEYUP:
+                if event.key == pygame.K_UP or event.key == pygame.K_DOWN:
+                    y_change = 0
+
         game_display.fill(black)
         player(x, y)
         pygame.display.update()
