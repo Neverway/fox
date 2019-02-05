@@ -47,6 +47,10 @@ def player(x, y):
     game_display.blit(character, (x, y))
 
 
+def display_image(img, x, y):
+    game_display.blit(img, (x, y))
+
+
 # Game loop
 x = (display_width * 0.45)
 y = (display_height * 0.8)
