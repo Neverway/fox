@@ -17,6 +17,14 @@ pygame.display.set_caption('Fox in a box')
 window_icon = pygame.image.load('game.png')
 pygame.display.set_icon(window_icon)
 
+# Load sprites
+character = pygame.image.load('sprites/entities/fox/fox_base.png')
+
+
+# Spawn player
+def player(x, y):
+    game_display.blit(character, (x, y))
+
 # Game loop
 game_exit = False
 while not game_exit:
