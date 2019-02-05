@@ -1,4 +1,7 @@
 import pygame
+import logging
+
+log = logging.getLogger(__name__)
 
 # Important and need to be first
 pygame.init()
@@ -54,6 +57,7 @@ y_accel = 5
 
 while not game_exit:
     for event in pygame.event.get():
+        log.debug(event)
         if event.type == pygame.QUIT:
             game_exit = True
 
