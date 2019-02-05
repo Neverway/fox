@@ -17,6 +17,13 @@ pygame.display.set_caption('Fox in a box')
 window_icon = pygame.image.load('game.png')
 pygame.display.set_icon(window_icon)
 
+# Define colors
+black = (0, 0, 0)
+white = (255, 255, 255)
+red = (255, 0, 0)
+green = (0, 255, 0)
+blue = (0, 0, 255)
+
 # Load sprites
 character = pygame.image.load('sprites/entities/fox/fox_base.png')
 
@@ -28,8 +35,17 @@ def player(x, y):
 # Game loop
 game_exit = False
 while not game_exit:
+    x = (display_width * 0.45)
+    y = (display_height * 0.8)
+    x_change = 0
+    y_change = 0
+
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             game_exit = True
+
+        game_display.fill(black)
+        player(x, y)
+        pygame.display.update()
 
 pygame.quit()
