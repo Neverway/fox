@@ -23,6 +23,7 @@ white = (255, 255, 255)
 red = (255, 0, 0)
 green = (0, 255, 0)
 blue = (0, 0, 255)
+sky_blue = (125, 125, 255)
 
 # Add clock
 clock = pygame.time.Clock()
@@ -30,6 +31,10 @@ framerate = 60
 
 # Load sprites
 character = pygame.image.load('sprites/entities/fox/fox_base.png')
+grass = pygame.image.load('sprites/environment/forest/grass.png')
+dirt = pygame.image.load('sprites/environment/forest/dirt.png')
+stone = pygame.image.load('sprites/environment/forest/stone.png')
+tree = pygame.image.load('sprites/environment/forest/tree.png')
 
 
 # Spawn player
@@ -69,7 +74,7 @@ while not game_exit:
             if event.key == pygame.K_UP or event.key == pygame.K_DOWN:
                 pass
 
-    game_display.fill(black)
+    game_display.fill(sky_blue)
     player(x, y)
     pygame.display.update()
     clock.tick(framerate)
