@@ -43,25 +43,22 @@ while not game_exit:
         if event.type == pygame.QUIT:
             game_exit = True
 
-        # Left right movement
         if event.type == pygame.KEYDOWN:
+            # Left right movement
             if event.key == pygame.K_LEFT:
                 x += -0.015
             if event.key == pygame.K_RIGHT:
                 x += 0.015
-
-        if event.type == pygame.KEYUP:
-            if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
-                pass
-
-        # Up Down movement
-        if event.type == pygame.KEYDOWN:
+            # Up Down movement
             if event.key == pygame.K_UP:
                 y += -0.015
             if event.key == pygame.K_DOWN:
                 y += 0.015
 
         if event.type == pygame.KEYUP:
+            if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
+                pass
+
             if event.key == pygame.K_UP or event.key == pygame.K_DOWN:
                 pass
 
