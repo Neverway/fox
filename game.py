@@ -39,6 +39,7 @@ y = (display_height * 0.8)
 game_exit = False
 
 x_accel = 10
+y_accel = 10
 
 while not game_exit:
     for event in pygame.event.get():
@@ -53,9 +54,9 @@ while not game_exit:
                 x += x_accel
             # Up Down movement
             if event.key == pygame.K_UP:
-                y += -0.015
+                y += -y_accel
             if event.key == pygame.K_DOWN:
-                y += 0.015
+                y += y_accel
 
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
