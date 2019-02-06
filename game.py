@@ -2,7 +2,7 @@ import pygame
 import logging
 
 log = logging.getLogger(__name__)
-
+logging.basicConfig(level=logging.DEBUG)
 
 # Important and need to be first
 pygame.init()
@@ -50,6 +50,10 @@ def player(x, y):
 
 # Temp map
 # Grass
+def snap(pos, x_size=32, y_size=32):
+    x, y = pos
+    return x * x_size, y * y_size
+
 map_1 = {
     grass: [
         (0, 0),
