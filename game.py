@@ -3,6 +3,7 @@ import logging
 
 log = logging.getLogger(__name__)
 
+
 # Important and need to be first
 pygame.init()
 
@@ -55,8 +56,15 @@ map_1 = {
     ]
 }
 
-def display_image(img, x, y):
-    game_display.blit(img, (x, y))
+
+def display_image(img, pos):
+    game_display.blit(img, pos)
+
+
+def display_map(map):
+    for image, coords in map.items():
+        for coord in coords:
+            display_image(image, coord)
 
 
 # Game loop
@@ -104,6 +112,7 @@ while not game_exit:
 
     game_display.fill(sky_blue)
     player(x, y)
+    display_map(map_1)
     pygame.display.update()
     clock.tick(framerate)
 
