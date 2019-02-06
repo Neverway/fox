@@ -34,15 +34,19 @@ clock = pygame.time.Clock()
 framerate = 60
 
 # Load sprites
-character_small = pygame.image.load('sprites/entities/fox/fox_base.png')
-character_right = pygame.transform.scale2x(character_small)
-character_left = pygame.transform.flip(character_right, True, False)
-character_width, character_height = character_right.get_rect().size
+fox = pygame.sprite.Sprite()  # create sprite
+fox.base_image = pygame.image.load('sprites/entities/fox/fox_base.png').convert()
+fox.right = pygame.transform.scale2x(fox.base_image)
+fox.left = pygame.transform.flip(fox.right, True, False)
+fox.image = fox.right
+fox.rect = fox.image.get_rect()  # use image extent values
+fox.width, fox.height = fox.rect.size
 
 grass = pygame.image.load('sprites/environment/forest/grass.png')
 dirt = pygame.image.load('sprites/environment/forest/dirt.png')
 stone = pygame.image.load('sprites/environment/forest/stone.png')
 tree = pygame.image.load('sprites/environment/forest/tree.png')
+box = pygame.image.load('sprites/environment/other/box.png')
 
 
 # Spawn player
@@ -129,7 +133,10 @@ map_1 = {
     stone: [
         (18, 17),
         (18, 16),
-        (17, 17)
+        (17, 17)],
+    box: [
+        (18,153)
+
     ]
 }
 
@@ -152,8 +159,6 @@ game_exit = False
 x_accel = 5
 y_accel = 5
 
-character = character_right
-
 while not game_exit:
     for event in pygame.event.get():
         log.debug(event)
@@ -163,10 +168,10 @@ while not game_exit:
         if event.type == pygame.KEYDOWN:
             # Left right movement
             if event.key == pygame.K_LEFT:
-                character = character_left
+                fox.image = fox.left
                 x += -x_accel
             if event.key == pygame.K_RIGHT:
-                character = character_right
+                fox.image = fox.right
                 x += x_accel
             # Up Down movement
             if event.key == pygame.K_UP:
@@ -183,16 +188,16 @@ while not game_exit:
 
     if x < 0:
         x = 0
-    if x > display_width - character_width:
-        x = display_width - character_width
+    if x > display_width - fox.width:
+        x = display_width - fox.width
 
     if y < 0:
         y = 0
-    if y > display_height - character_height:
-        y = display_height - character_height
+    if y > display_height - fox.height:
+        y = display_height - fox.height
 
     game_display.fill(sky_blue)
-    player(character, (x, y))
+    player(fox.image, (x, y))
     display_map(map_1)
     pygame.display.update()
     clock.tick(framerate)
