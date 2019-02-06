@@ -34,7 +34,8 @@ clock = pygame.time.Clock()
 framerate = 60
 
 # Load sprites
-character = pygame.image.load('sprites/entities/fox/fox_base.png')
+charactersmall = pygame.image.load('sprites/entities/fox/fox_base.png')
+character = pygame.transform.scale2x(charactersmall)
 character_width, character_height = character.get_rect().size
 
 grass = pygame.image.load('sprites/environment/forest/grass.png')
@@ -54,9 +55,80 @@ def grid(pos, x_size=32, y_size=32):
     x, y = pos
     return x * x_size, y * y_size
 
+
 map_1 = {
-    grass: [
+    # Left wall
+    dirt: [
         (0, 0),
+        (0, 1),
+        (0, 2),
+        (0, 3),
+        (0, 4),
+        (0, 5),
+        (0, 6),
+        (0, 7),
+        (0, 8),
+        (0, 9),
+        (0, 10),
+        (0, 11),
+        (0, 12),
+        (0, 13),
+        (0, 14),
+        (0, 15),
+        (0, 16),
+        (0, 17),
+        (0, 18),
+        # Right wall
+        (24, 0),
+        (24, 1),
+        (24, 2),
+        (24, 3),
+        (24, 4),
+        (24, 5),
+        (24, 6),
+        (24, 7),
+        (24, 8),
+        (24, 9),
+        (24, 10),
+        (24, 11),
+        (24, 12),
+        (24, 13),
+        (24, 14),
+        (24, 15),
+        (24, 16),
+        (24, 17),
+        (24, 18),
+        ],
+    grass: [
+        # floor
+        (1, 18),
+        (2, 18),
+        (3, 18),
+        (4, 18),
+        (5, 18),
+        (6, 18),
+        (7, 18),
+        (8, 18),
+        (9, 18),
+        (10, 18),
+        (11, 18),
+        (12, 18),
+        (13, 18),
+        (14, 18),
+        (15, 18),
+        (16, 18),
+        (17, 18),
+        (18, 18),
+        (19, 18),
+        (20, 18),
+        (21, 18),
+        (22, 18),
+        (23, 18),
+        ],
+    stone: [
+        (18, 17),
+        (18, 16),
+        (17, 17)
     ]
 }
 
