@@ -50,7 +50,7 @@ def player(x, y):
 
 # Temp map
 # Grass
-def snap(pos, x_size=32, y_size=32):
+def grid(pos, x_size=32, y_size=32):
     x, y = pos
     return x * x_size, y * y_size
 
@@ -62,7 +62,7 @@ map_1 = {
 
 
 def display_image(img, pos):
-    game_display.blit(img, pos)
+    game_display.blit(img, grid(pos))
 
 
 def display_map(map):
