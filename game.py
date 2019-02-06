@@ -34,9 +34,10 @@ clock = pygame.time.Clock()
 framerate = 60
 
 # Load sprites
-charactersmall = pygame.image.load('sprites/entities/fox/fox_base.png')
-character = pygame.transform.scale2x(charactersmall)
-character_width, character_height = character.get_rect().size
+character_small = pygame.image.load('sprites/entities/fox/fox_base.png')
+character_right = pygame.transform.scale2x(character_small)
+character_left = pygame.transform.flip(character_right, True, False)
+character_width, character_height = character_right.get_rect().size
 
 grass = pygame.image.load('sprites/environment/forest/grass.png')
 dirt = pygame.image.load('sprites/environment/forest/dirt.png')
@@ -45,8 +46,8 @@ tree = pygame.image.load('sprites/environment/forest/tree.png')
 
 
 # Spawn player
-def player(x, y):
-    game_display.blit(character, (x, y))
+def player(img, pos):
+    game_display.blit(img, pos)
 
 
 # Temp map
@@ -151,6 +152,8 @@ game_exit = False
 x_accel = 5
 y_accel = 5
 
+character = character_right
+
 while not game_exit:
     for event in pygame.event.get():
         log.debug(event)
@@ -160,8 +163,10 @@ while not game_exit:
         if event.type == pygame.KEYDOWN:
             # Left right movement
             if event.key == pygame.K_LEFT:
+                character = character_left
                 x += -x_accel
             if event.key == pygame.K_RIGHT:
+                character = character_right
                 x += x_accel
             # Up Down movement
             if event.key == pygame.K_UP:
@@ -187,7 +192,7 @@ while not game_exit:
         y = display_height - character_height
 
     game_display.fill(sky_blue)
-    player(x, y)
+    player(character, (x, y))
     display_map(map_1)
     pygame.display.update()
     clock.tick(framerate)
