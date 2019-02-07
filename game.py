@@ -44,7 +44,7 @@ fox.width, fox.height = fox.rect.size
 
 
 class Mob(pygame.sprite.Sprite):
-    base_image = pygame.image.load('sprites/missing')
+    base_image = pygame.image.load('sprites/missing.png')
 
     def __init__(self, x, y):
         super().__init__()
@@ -66,7 +66,7 @@ def grid(x, y, x_size=32, y_size=32):
 
 
 class Block(pygame.sprite.Sprite):
-    image = pygame.image.load('sprites/environment/other/box.png')
+    image = pygame.image.load('sprites/missing.png')
 
     def __init__(self, x, y):
         super().__init__()
