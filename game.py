@@ -197,15 +197,15 @@ while not game_exit:
             if event.key == pygame.K_UP or event.key == pygame.K_DOWN:
                 pass
 
-    if x < 0:
-        x = 0
-    if x > display_width - fox.rect.x:
-        x = display_width - fox.rect.x
+    if fox.x < 0:
+        fox.x = 0
+    if fox.x > display_width - fox.rect.width:
+        fox.x = display_width - fox.rect.width
 
-    if y < 0:
-        y = 0
-    if y > display_height - fox.rect.y:
-        y = display_height - fox.rect.y
+    if fox.y < 0:
+        fox.y = 0
+    if fox.y > display_height - fox.rect.height:
+        fox.y = display_height - fox.rect.height
 
     game_display.fill(sky_blue)
     mobs.draw(game_display)
