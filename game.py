@@ -163,8 +163,6 @@ def display_map(map):
 
 
 # Game loop
-x = (display_width * 0.45)
-y = (display_height * 0.8)
 game_exit = False
 
 x_accel = 5
