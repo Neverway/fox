@@ -1,5 +1,6 @@
 import pygame
 import logging
+import enum
 
 log = logging.getLogger(__name__)
 logging.basicConfig(level=logging.DEBUG)
@@ -33,14 +34,10 @@ sky_blue = (125, 125, 255)
 clock = pygame.time.Clock()
 framerate = 60
 
-# Load sprites
-fox = pygame.sprite.Sprite()  # create fox sprite
-fox.base_image = pygame.image.load('sprites/entities/fox/fox_base.png').convert()
-fox.right = pygame.transform.scale2x(fox.base_image)
-fox.left = pygame.transform.flip(fox.right, True, False)
-fox.image = fox.right
-fox.rect = fox.image.get_rect()  # use image extent values
-fox.width, fox.height = fox.rect.size
+
+class Direction(enum.Enum):
+    left = 'left'
+    right = 'right'
 
 
 class Mob(pygame.sprite.Sprite):
@@ -58,11 +55,6 @@ class Fox(Mob):
     image = pygame.transform.scale2x(
         pygame.image.load('sprites/entities/fox/fox_base.png')
     )
-
-
-# Spawn player
-def player(img, pos):
-    game_display.blit(img, pos)
 
 
 # Temp map
