@@ -121,8 +121,8 @@ mobs.add(
     fox,
 )
 
-terrain = pygame.sprite.Group()
-terrain.add(
+terrain1 = pygame.sprite.Group()
+terrain1.add(
     Grass(0, 18),
     Grass(1, 18),
     Grass(2, 18),
@@ -150,11 +150,40 @@ terrain.add(
     Dirt(5, 17),
 )
 
+terrain2 = pygame.sprite.Group()
+terrain2.add(
+    Stone(0, 18),
+    Stone(1, 18),
+    Stone(2, 18),
+    Stone(3, 18),
+    Stone(4, 18),
+    Stone(5, 18),
+    Stone(6, 18),
+    Stone(7, 18),
+    Stone(8, 18),
+    Stone(9, 18),
+    Stone(10, 18),
+    Stone(11, 18),
+    Stone(12, 18),
+    Stone(13, 18),
+    Stone(14, 18),
+    Stone(15, 18),
+    Stone(18, 18),
+    Stone(19, 18),
+    Stone(20, 18),
+    Stone(21, 18),
+    Stone(22, 18),
+    Stone(23, 18),
+    Stone(24, 18),
+)
+
 goal = pygame.sprite.Group()
 goal.add(
     Box(23, 17),
 )
 
+sky = sky_blue
+level = terrain1
 
 def display_image(img, pos):
     game_display.blit(img, grid(pos))
@@ -176,12 +205,16 @@ y_accel = 16
 gravity = -5
 
 while not game_exit:
-    collisions = pygame.sprite.groupcollide(mobs, terrain, False, False)
+    collisions = pygame.sprite.groupcollide(mobs, level, False, False)
     # if collisions:
     #     log.info(collisions)
     win = pygame.sprite.groupcollide(mobs, goal, False, False)
     if win:
         print("You Win!")
+        level = terrain2
+        fox.x = 32
+        fox.y = 32*17
+        sky = black
     for event in pygame.event.get():
         log.debug(event)
         if event.type == pygame.QUIT:
@@ -223,9 +256,9 @@ while not game_exit:
     if fox.y > display_height - fox.rect.height:
         fox.y = display_height - fox.rect.height
 
-    game_display.fill(sky_blue)
+    game_display.fill(sky)
     mobs.draw(game_display)
-    terrain.draw(game_display)
+    level.draw(game_display)
     goal.draw(game_display)
     pygame.display.update()
     clock.tick(framerate)
