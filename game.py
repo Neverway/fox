@@ -168,8 +168,8 @@ game_exit = False
 delta_x = 0
 delta_y = 0
 x_accel = 5
-y_accel = 5
-gravity = -2
+y_accel = 16
+gravity = -5
 
 while not game_exit:
     for event in pygame.event.get():
