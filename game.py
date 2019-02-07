@@ -182,11 +182,6 @@ while not game_exit:
             if event.key == pygame.K_RIGHT:
                 fox.facing = Direction.right
                 fox.x += x_accel
-            # Up Down movement
-            if event.key == pygame.K_UP:
-                fox.y += -y_accel
-            if event.key == pygame.K_DOWN:
-                fox.y += y_accel
 
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
