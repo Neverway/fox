@@ -99,6 +99,12 @@ class Tree(Block):
     image = pygame.image.load('sprites/environment/forest/tree.png')
 
 
+fox = Fox(*grid(0, 16))
+mobs = pygame.sprites.Group()
+mobs.add(
+    fox,
+)
+
 terrain = pygame.sprite.Group()
 terrain.add(
     Grass(0, 18),
