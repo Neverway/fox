@@ -60,88 +60,68 @@ def player(img, pos):
 
 
 # Temp map
-def grid(pos, x_size=32, y_size=32):
-    x, y = pos
+def grid(x, y, x_size=32, y_size=32):
     return x * x_size, y * y_size
 
-# map_1 = {
-#     # Left wall
-#     dirt: [
-#         (0, 0),
-#         (0, 1),
-#         (0, 2),
-#         (0, 3),
-#         (0, 4),
-#         (0, 5),
-#         (0, 6),
-#         (0, 7),
-#         (0, 8),
-#         (0, 9),
-#         (0, 10),
-#         (0, 11),
-#         (0, 12),
-#         (0, 13),
-#         (0, 14),
-#         (0, 15),
-#         (0, 16),
-#         (0, 17),
-#         (0, 18),
-#         # Right wall
-#         (24, 0),
-#         (24, 1),
-#         (24, 2),
-#         (24, 3),
-#         (24, 4),
-#         (24, 5),
-#         (24, 6),
-#         (24, 7),
-#         (24, 8),
-#         (24, 9),
-#         (24, 10),
-#         (24, 11),
-#         (24, 12),
-#         (24, 13),
-#         (24, 14),
-#         (24, 15),
-#         (24, 16),
-#         (24, 17),
-#         (24, 18),
-#         ],
-#     grass: [
-#         # floor
-#         (1, 18),
-#         (2, 18),
-#         (3, 18),
-#         (4, 18),
-#         (5, 18),
-#         (6, 18),
-#         (7, 18),
-#         (8, 18),
-#         (9, 18),
-#         (10, 18),
-#         (11, 18),
-#         (12, 18),
-#         (13, 18),
-#         (14, 18),
-#         (15, 18),
-#         (16, 18),
-#         (17, 18),
-#         (18, 18),
-#         (19, 18),
-#         (20, 18),
-#         (21, 18),
-#         (22, 18),
-#         (23, 18),
-#         ],
-#     stone: [
-#         (18, 17),
-#         (18, 16),
-#         (17, 17)],
-#     box: [
-#         (18,153)
-#
-#     ]
-# }
+
+class Block(pygame.sprite.Sprite):
+    image = pygame.image.load('sprites/environment/other/box.png')
+
+    def __init__(self, x, y):
+        super().__init__()
+        self.rect = self.image.get_rect()
+        self.rect.move_ip(*grid(x, y))
+
+
+class Grass(Block):
+    image = pygame.image.load('sprites/environment/forest/grass.png')
+
+
+class Dirt(Block):
+    image = pygame.image.load('sprites/environment/forest/dirt.png')
+
+
+class Stone(Block):
+    image = pygame.image.load('sprites/environment/forest/stone.png')
+
+
+class Box(Block):
+    image = pygame.image.load('sprites/environment/other/box.png')
+
+
+class Tree(Block):
+    image = pygame.image.load('sprites/environment/forest/tree.png')
+
+
+terrain = pygame.sprite.Group()
+terrain.add(
+    Grass(0, 18),
+    Grass(1, 18),
+    Grass(2, 18),
+    Grass(3, 18),
+    Grass(4, 18),
+    Grass(5, 18),
+    Grass(6, 18),
+    Grass(7, 18),
+    Grass(8, 18),
+    Grass(9, 18),
+    Grass(10, 18),
+    Grass(11, 18),
+    Grass(12, 18),
+    Grass(13, 18),
+    Grass(14, 18),
+    Grass(15, 18),
+    Grass(18, 18),
+    Grass(19, 18),
+    Grass(20, 18),
+    Grass(21, 18),
+    Grass(22, 18),
+    Grass(23, 18),
+    Grass(24, 18),
+    Stone(3, 17),
+    Dirt(5, 17),
+    Box(7, 17),
+)
 
 
 def display_image(img, pos):
@@ -201,7 +181,7 @@ while not game_exit:
 
     game_display.fill(sky_blue)
     player(fox.image, (x, y))
-    display_map()
+    terrain.draw(game_display)
     pygame.display.update()
     clock.tick(framerate)
 
