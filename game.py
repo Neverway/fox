@@ -121,35 +121,39 @@ mobs.add(
     fox,
 )
 
-# terrain = pygame.sprite.Group()
-# terrain.add(
-#     Grass(0, 18),
-#     Grass(1, 18),
-#     Grass(2, 18),
-#     Grass(3, 18),
-#     Grass(4, 18),
-#     Grass(5, 18),
-#     Grass(6, 18),
-#     Grass(7, 18),
-#     Grass(8, 18),
-#     Grass(9, 18),
-#     Grass(10, 18),
-#     Grass(11, 18),
-#     Grass(12, 18),
-#     Grass(13, 18),
-#     Grass(14, 18),
-#     Grass(15, 18),
-#     Grass(18, 18),
-#     Grass(19, 18),
-#     Grass(20, 18),
-#     Grass(21, 18),
-#     Grass(22, 18),
-#     Grass(23, 18),
-#     Grass(24, 18),
-#     Stone(3, 17),
-#     Dirt(5, 17),
-#     Box(7, 17),
-# )
+terrain = pygame.sprite.Group()
+terrain.add(
+    Grass(0, 18),
+    Grass(1, 18),
+    Grass(2, 18),
+    Grass(3, 18),
+    Grass(4, 18),
+    Grass(5, 18),
+    Grass(6, 18),
+    Grass(7, 18),
+    Grass(8, 18),
+    Grass(9, 18),
+    Grass(10, 18),
+    Grass(11, 18),
+    Grass(12, 18),
+    Grass(13, 18),
+    Grass(14, 18),
+    Grass(15, 18),
+    Grass(18, 18),
+    Grass(19, 18),
+    Grass(20, 18),
+    Grass(21, 18),
+    Grass(22, 18),
+    Grass(23, 18),
+    Grass(24, 18),
+    Stone(3, 17),
+    Dirt(5, 17),
+)
+
+goal = pygame.sprite.Group()
+goal.add(
+    Box(23, 17),
+)
 
 
 def display_image(img, pos):
@@ -172,6 +176,12 @@ y_accel = 16
 gravity = -5
 
 while not game_exit:
+    collisions = pygame.sprite.groupcollide(mobs, terrain, False, False)
+    # if collisions:
+    #     log.info(collisions)
+    win = pygame.sprite.groupcollide(mobs, goal, False, False)
+    if win:
+        print("You Win!")
     for event in pygame.event.get():
         log.debug(event)
         if event.type == pygame.QUIT:
@@ -215,7 +225,8 @@ while not game_exit:
 
     game_display.fill(sky_blue)
     mobs.draw(game_display)
-    # terrain.draw(game_display)
+    terrain.draw(game_display)
+    goal.draw(game_display)
     pygame.display.update()
     clock.tick(framerate)
 
