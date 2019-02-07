@@ -100,7 +100,7 @@ class Tree(Block):
 
 
 fox = Fox(*grid(0, 16))
-mobs = pygame.sprites.Group()
+mobs = pygame.sprite.Group()
 mobs.add(
     fox,
 )
@@ -163,10 +163,10 @@ while not game_exit:
         if event.type == pygame.KEYDOWN:
             # Left right movement
             if event.key == pygame.K_LEFT:
-                fox.image = fox.left
+                fox.facing = Direction.left
                 x += -x_accel
             if event.key == pygame.K_RIGHT:
-                fox.image = fox.right
+                fox.facing = Direction.right
                 x += x_accel
             # Up Down movement
             if event.key == pygame.K_UP:
@@ -183,16 +183,16 @@ while not game_exit:
 
     if x < 0:
         x = 0
-    if x > display_width - fox.width:
-        x = display_width - fox.width
+    if x > display_width - fox.rect.x:
+        x = display_width - fox.rect.x
 
     if y < 0:
         y = 0
-    if y > display_height - fox.height:
-        y = display_height - fox.height
+    if y > display_height - fox.rect.y:
+        y = display_height - fox.rect.y
 
     game_display.fill(sky_blue)
-    player(fox.image, (x, y))
+    mobs.draw(game_display)
     terrain.draw(game_display)
     pygame.display.update()
     clock.tick(framerate)
