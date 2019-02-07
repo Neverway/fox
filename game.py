@@ -54,7 +54,10 @@ class Mob(pygame.sprite.Sprite):
         self.rect.move_ip(x, y)
 
 
-
+class Fox(Mob):
+    image = pygame.transform.scale2x(
+        pygame.image.load('sprites/entities/fox/fox_base.png')
+    )
 
 
 # Spawn player
