@@ -52,6 +52,22 @@ class Mob(pygame.sprite.Sprite):
         self.facing = Direction.right
 
     @property
+    def x(self):
+        return self.rect.x
+
+    @x.setter
+    def x(self, value):
+        self.rect.x = value
+
+    @property
+    def y(self):
+        return self.rect.y
+
+    @y.setter
+    def y(self, value):
+        self.rect.y = value
+
+    @property
     def image(self):
         if self.facing == Direction.left:
             return self.image_left
@@ -164,15 +180,15 @@ while not game_exit:
             # Left right movement
             if event.key == pygame.K_LEFT:
                 fox.facing = Direction.left
-                x += -x_accel
+                fox.x += -x_accel
             if event.key == pygame.K_RIGHT:
                 fox.facing = Direction.right
-                x += x_accel
+                fox.x += x_accel
             # Up Down movement
             if event.key == pygame.K_UP:
-                y += -y_accel
+                fox.y += -y_accel
             if event.key == pygame.K_DOWN:
-                y += y_accel
+                fox.y += y_accel
 
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
