@@ -44,15 +44,17 @@ fox.width, fox.height = fox.rect.size
 
 
 class Mob(pygame.sprite.Sprite):
-    base_image = pygame.image.load('sprites/missing.png')
+    image = pygame.image.load('sprites/missing.png')
 
     def __init__(self, x, y):
         super().__init__()
-        self.image = self.image_right
         self.image_right = self.image
-        self.image_left = pygame.transform.flip(self.base_image, True, False)
+        self.image_left = pygame.transform.flip(self.image, True, False)
         self.rect = self.image.get_rect()
         self.rect.move_ip(x, y)
+
+
+
 
 
 # Spawn player
