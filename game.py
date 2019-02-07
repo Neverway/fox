@@ -165,11 +165,11 @@ def display_map(map):
 # Game loop
 game_exit = False
 
-facing = Direction.right
 delta_x = 0
 delta_y = 0
 x_accel = 5
 y_accel = 5
+gravity = 1
 
 while not game_exit:
     for event in pygame.event.get():
@@ -180,10 +180,8 @@ while not game_exit:
         if event.type == pygame.KEYDOWN:
             # Left right movement
             if event.key == pygame.K_LEFT:
-                facing = Direction.left
                 delta_x = -x_accel
             if event.key == pygame.K_RIGHT:
-                facing = Direction.right
                 delta_x = x_accel
 
         if event.type == pygame.KEYUP:
@@ -193,9 +191,14 @@ while not game_exit:
             if event.key == pygame.K_UP or event.key == pygame.K_DOWN:
                 pass
 
-    fox.facing = facing
+    if delta_x < 0:
+        fox.facing = Direction.left
+    if delta_x > 0:
+        fox.facing = Direction.right
+
     fox.x += delta_x
-    fox.y += delta_y
+    fox.y += delta_y + gravity
+
     if fox.x < 0:
         fox.x = 0
     if fox.x > display_width - fox.rect.width:
