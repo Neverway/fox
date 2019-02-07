@@ -42,16 +42,17 @@ fox.image = fox.right
 fox.rect = fox.image.get_rect()  # use image extent values
 fox.width, fox.height = fox.rect.size
 
-grass = pygame.sprite.Sprite()  # create grass sprite
-grass.image = pygame.image.load('sprites/environment/forest/grass.png')
-dirt = pygame.sprite.Sprite()  # create dirt sprite
-dirt.image = pygame.image.load('sprites/environment/forest/dirt.png')
-stone = pygame.sprite.Sprite()  # create stone sprite
-stone = pygame.image.load('sprites/environment/forest/stone.png')
-tree = pygame.sprite.Sprite()  # create tree sprite
-tree = pygame.image.load('sprites/environment/forest/tree.png')
-box = pygame.sprite.Sprite()  # create box sprite
-box = pygame.image.load('sprites/environment/other/box.png')
+
+class Mob(pygame.sprite.Sprite):
+    base_image = pygame.image.load('sprites/missing')
+
+    def __init__(self, x, y):
+        super().__init__()
+        self.image = self.image_right
+        self.image_right = self.image
+        self.image_left = pygame.transform.flip(self.base_image, True, False)
+        self.rect = self.image.get_rect()
+        self.rect.move_ip(x, y)
 
 
 # Spawn player
