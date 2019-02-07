@@ -121,6 +121,7 @@ mobs.add(
     fox,
 )
 
+
 terrain1 = pygame.sprite.Group()
 terrain1.add(
     Grass(0, 18),
@@ -185,6 +186,7 @@ goal.add(
 sky = sky_blue
 level = terrain1
 
+
 def display_image(img, pos):
     game_display.blit(img, grid(pos))
 
@@ -200,8 +202,8 @@ game_exit = False
 
 delta_x = 0
 delta_y = 0
-x_accel = 5
-y_accel = 16
+x_accelerate = 5
+y_accelerate = 16
 gravity = -5
 
 while not game_exit:
@@ -223,11 +225,11 @@ while not game_exit:
         if event.type == pygame.KEYDOWN:
             # Left right movement
             if event.key == pygame.K_LEFT:
-                delta_x = -x_accel
+                delta_x = -x_accelerate
             if event.key == pygame.K_RIGHT:
-                delta_x = x_accel
+                delta_x = x_accelerate
             if event.key == pygame.K_SPACE:
-                delta_y = y_accel
+                delta_y = y_accelerate
 
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
