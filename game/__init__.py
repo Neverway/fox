@@ -58,7 +58,7 @@ def run():
     )
 
     terrain1 = pygame.sprite.Group()
-    terrain1.add(*level_2.terrain)
+    terrain1.add(*level_1.terrain)
 
     terrain2 = pygame.sprite.Group()
     terrain2.add(*level_2.terrain)
