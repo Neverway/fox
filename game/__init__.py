@@ -3,6 +3,7 @@ import logging
 import pygame
 
 from game.constants import Direction
+from game.utils import grid
 
 log = logging.getLogger(__name__)
 logging.basicConfig(level=logging.DEBUG)
@@ -76,11 +77,6 @@ class Fox(Mob):
     base_image = pygame.transform.scale2x(
         pygame.image.load('sprites/entities/fox/fox_base.png')
     )
-
-
-# Temp map
-def grid(x, y, x_size=32, y_size=32):
-    return x * x_size, y * y_size
 
 
 class Block(pygame.sprite.Sprite):
