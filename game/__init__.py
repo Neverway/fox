@@ -11,6 +11,10 @@ from game.constants import (
     sky_blue,
     white,
 )
+from game.levels import (
+    level_1,
+    level_2,
+)
 from game.models import (
     Box,
     Dirt,
@@ -20,7 +24,6 @@ from game.models import (
     Tree,
 )
 from game.utils import grid
-from game.levels import level_1
 
 log = logging.getLogger(__name__)
 logging.basicConfig(level=logging.DEBUG)
@@ -56,31 +59,7 @@ terrain1 = pygame.sprite.Group()
 terrain1.add(*level_1.terrain)
 
 terrain2 = pygame.sprite.Group()
-terrain2.add(
-    Stone(0, 18),
-    Stone(1, 18),
-    Stone(2, 18),
-    Stone(3, 18),
-    Stone(4, 18),
-    Stone(5, 18),
-    Stone(6, 18),
-    Stone(7, 18),
-    Stone(8, 18),
-    Stone(9, 18),
-    Stone(10, 18),
-    Stone(11, 18),
-    Stone(12, 18),
-    Stone(13, 18),
-    Stone(14, 18),
-    Stone(15, 18),
-    Stone(18, 18),
-    Stone(19, 18),
-    Stone(20, 18),
-    Stone(21, 18),
-    Stone(22, 18),
-    Stone(23, 18),
-    Stone(24, 18),
-)
+terrain2.add(*level_2.terrain)
 
 goal = pygame.sprite.Group()
 goal.add(
