@@ -1,6 +1,8 @@
-import pygame
 import logging
-import enum
+
+import pygame
+
+from game.constants import Direction
 
 log = logging.getLogger(__name__)
 logging.basicConfig(level=logging.DEBUG)
@@ -33,11 +35,6 @@ sky_blue = (125, 125, 255)
 # Add clock
 clock = pygame.time.Clock()
 framerate = 60
-
-
-class Direction(enum.Enum):
-    left = 'left'
-    right = 'right'
 
 
 class Mob(pygame.sprite.Sprite):
