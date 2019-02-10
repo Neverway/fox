@@ -1,6 +1,7 @@
 from game.models import Grass, Stone, Dirt
 
 terrain = [
+    # Floor (cover)
     Grass(0, 18),
     Grass(1, 18),
     Grass(2, 18),
@@ -26,6 +27,9 @@ terrain = [
     Grass(22, 18),
     Grass(23, 18),
     Grass(24, 18),
+
+    # Inside
     Dirt(12, 17),
     Grass(12, 16),
+
 ]
