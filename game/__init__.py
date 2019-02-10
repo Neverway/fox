@@ -114,6 +114,11 @@ def run():
                 if event.key == pygame.K_UP or event.key == pygame.K_DOWN:
                     pass
 
+            if event.type == pygame.KEYDOWN:
+                # Dev meddler
+                if event.key == pygame.K_2:
+                    level = terrain2
+
         if delta_x < 0:
             fox.facing = Direction.left
         if delta_x > 0:
