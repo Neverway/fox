@@ -82,8 +82,8 @@ def run():
 
     while not game_exit:
         collisions = pygame.sprite.groupcollide(mobs, level, False, False)
-        # if collisions:
-        #     log.info(collisions)
+        if collisions:
+            log.info(collisions)
         win = pygame.sprite.groupcollide(mobs, goal, False, False)
         if win:
             print("You Win!")
