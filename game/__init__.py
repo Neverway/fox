@@ -33,6 +33,11 @@ log = logging.getLogger(__name__)
 logging.basicConfig(level=logging.DEBUG)
 
 
+def ground_clamp(mob, collisions):
+    surfaces = (item.rect.top for item in collisions)
+    return min(mob.rect.bottom, *surfaces)
+
+
 def run():
     # Important and need to be first
     pygame.init()
