@@ -42,7 +42,7 @@ game_display = pygame.display.set_mode((display_width, display_height))
 pygame.display.set_caption('Fox in a box')
 
 # Window icon
-window_icon = pygame.image.load('game.png')
+window_icon = pygame.image.load('../game.png')
 pygame.display.set_icon(window_icon)
 
 # Add clock
