@@ -28,113 +28,115 @@ from game.utils import grid
 log = logging.getLogger(__name__)
 logging.basicConfig(level=logging.DEBUG)
 
-# Important and need to be first
-pygame.init()
 
-# Resolution of window
-display_width = 800
-display_height = 600
+def run():
+    # Important and need to be first
+    pygame.init()
 
-# Create window
-game_display = pygame.display.set_mode((display_width, display_height))
+    # Resolution of window
+    display_width = 800
+    display_height = 600
 
-# Window title
-pygame.display.set_caption('Fox in a box')
+    # Create window
+    game_display = pygame.display.set_mode((display_width, display_height))
 
-# Window icon
-window_icon = pygame.image.load('../game.png')
-pygame.display.set_icon(window_icon)
+    # Window title
+    pygame.display.set_caption('Fox in a box')
 
-# Add clock
-clock = pygame.time.Clock()
-framerate = 60
+    # Window icon
+    window_icon = pygame.image.load('game.png')
+    pygame.display.set_icon(window_icon)
 
-fox = Fox(*grid(0, 16))
-mobs = pygame.sprite.Group()
-mobs.add(
-    fox,
-)
+    # Add clock
+    clock = pygame.time.Clock()
+    framerate = 60
 
-terrain1 = pygame.sprite.Group()
-terrain1.add(*level_1.terrain)
+    fox = Fox(*grid(0, 16))
+    mobs = pygame.sprite.Group()
+    mobs.add(
+        fox,
+    )
 
-terrain2 = pygame.sprite.Group()
-terrain2.add(*level_2.terrain)
+    terrain1 = pygame.sprite.Group()
+    terrain1.add(*level_1.terrain)
 
-goal = pygame.sprite.Group()
-goal.add(
-    Box(23, 17),
-)
+    terrain2 = pygame.sprite.Group()
+    terrain2.add(*level_2.terrain)
 
-sky = sky_blue
-level = terrain1
+    goal = pygame.sprite.Group()
+    goal.add(
+        Box(23, 17),
+    )
 
-# Game loop
-game_exit = False
+    sky = sky_blue
+    level = terrain1
 
-delta_x = 0
-delta_y = 0
-x_accelerate = 5
-y_accelerate = 16
-gravity = -5
+    # Game loop
+    game_exit = False
 
-while not game_exit:
-    collisions = pygame.sprite.groupcollide(mobs, level, False, False)
-    # if collisions:
-    #     log.info(collisions)
-    win = pygame.sprite.groupcollide(mobs, goal, False, False)
-    if win:
-        print("You Win!")
-        level = terrain2
-        fox.x = 32
-        fox.y = 32*17
-        sky = black
-    for event in pygame.event.get():
-        log.debug(event)
-        if event.type == pygame.QUIT:
-            game_exit = True
+    delta_x = 0
+    delta_y = 0
+    x_accelerate = 5
+    y_accelerate = 16
+    gravity = -5
 
-        if event.type == pygame.KEYDOWN:
-            # Left right movement
-            if event.key == pygame.K_LEFT:
-                delta_x = -x_accelerate
-            if event.key == pygame.K_RIGHT:
-                delta_x = x_accelerate
-            if event.key == pygame.K_SPACE:
-                delta_y = y_accelerate
+    while not game_exit:
+        collisions = pygame.sprite.groupcollide(mobs, level, False, False)
+        # if collisions:
+        #     log.info(collisions)
+        win = pygame.sprite.groupcollide(mobs, goal, False, False)
+        if win:
+            print("You Win!")
+            level = terrain2
+            fox.x = 32
+            fox.y = 32*17
+            sky = black
+        for event in pygame.event.get():
+            log.debug(event)
+            if event.type == pygame.QUIT:
+                game_exit = True
 
-        if event.type == pygame.KEYUP:
-            if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
-                delta_x = 0
-            if event.key == pygame.K_SPACE:
-                delta_y = 0
+            if event.type == pygame.KEYDOWN:
+                # Left right movement
+                if event.key == pygame.K_LEFT:
+                    delta_x = -x_accelerate
+                if event.key == pygame.K_RIGHT:
+                    delta_x = x_accelerate
+                if event.key == pygame.K_SPACE:
+                    delta_y = y_accelerate
 
-            if event.key == pygame.K_UP or event.key == pygame.K_DOWN:
-                pass
+            if event.type == pygame.KEYUP:
+                if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
+                    delta_x = 0
+                if event.key == pygame.K_SPACE:
+                    delta_y = 0
 
-    if delta_x < 0:
-        fox.facing = Direction.left
-    if delta_x > 0:
-        fox.facing = Direction.right
+                if event.key == pygame.K_UP or event.key == pygame.K_DOWN:
+                    pass
 
-    fox.x += delta_x
-    fox.y -= delta_y + gravity
+        if delta_x < 0:
+            fox.facing = Direction.left
+        if delta_x > 0:
+            fox.facing = Direction.right
 
-    if fox.x < 0:
-        fox.x = 0
-    if fox.x > display_width - fox.rect.width:
-        fox.x = display_width - fox.rect.width
+        fox.x += delta_x
+        fox.y -= delta_y + gravity
 
-    if fox.y < 0:
-        fox.y = 0
-    if fox.y > display_height - fox.rect.height:
-        fox.y = display_height - fox.rect.height
+        if fox.x < 0:
+            fox.x = 0
+        if fox.x > display_width - fox.rect.width:
+            fox.x = display_width - fox.rect.width
 
-    game_display.fill(sky)
-    mobs.draw(game_display)
-    level.draw(game_display)
-    goal.draw(game_display)
-    pygame.display.update()
-    clock.tick(framerate)
+        if fox.y < 0:
+            fox.y = 0
+        if fox.y > display_height - fox.rect.height:
+            fox.y = display_height - fox.rect.height
 
-pygame.quit()
+        game_display.fill(sky)
+        mobs.draw(game_display)
+        level.draw(game_display)
+        goal.draw(game_display)
+        pygame.display.update()
+        clock.tick(framerate)
+
+    pygame.quit()

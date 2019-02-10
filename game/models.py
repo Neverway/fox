@@ -6,7 +6,7 @@ from game.utils import grid
 
 
 class Block(Sprite):
-    image = pygame.image.load('../sprites/missing.png')
+    image = pygame.image.load('sprites/missing.png')
 
     def __init__(self, x, y):
         super().__init__()
@@ -15,27 +15,27 @@ class Block(Sprite):
 
 
 class Box(Block):
-    image = pygame.image.load('../sprites/environment/other/box.png')
+    image = pygame.image.load('sprites/environment/other/box.png')
 
 
 class Dirt(Block):
-    image = pygame.image.load('../sprites/environment/forest/dirt.png')
+    image = pygame.image.load('sprites/environment/forest/dirt.png')
 
 
 class Grass(Block):
-    image = pygame.image.load('../sprites/environment/forest/grass.png')
+    image = pygame.image.load('sprites/environment/forest/grass.png')
 
 
 class Stone(Block):
-    image = pygame.image.load('../sprites/environment/forest/stone.png')
+    image = pygame.image.load('sprites/environment/forest/stone.png')
 
 
 class Tree(Block):
-    image = pygame.image.load('../sprites/environment/forest/tree.png')
+    image = pygame.image.load('sprites/environment/forest/tree.png')
 
 
 class Mob(pygame.sprite.Sprite):
-    base_image = pygame.image.load('../sprites/missing.png')
+    base_image = pygame.image.load('sprites/missing.png')
 
     def __init__(self, x, y):
         super().__init__()
@@ -71,5 +71,5 @@ class Mob(pygame.sprite.Sprite):
 
 class Fox(Mob):
     base_image = pygame.transform.scale2x(
-        pygame.image.load('../sprites/entities/fox/fox_base.png')
+        pygame.image.load('sprites/entities/fox/fox_base.png')
     )
