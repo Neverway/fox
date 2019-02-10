@@ -90,16 +90,6 @@ def run():
     gravity = -5
 
     while not game_exit:
-        collisions = pygame.sprite.groupcollide(mobs, level, False, False)
-        if collisions:
-            log.info(collisions)
-        win = pygame.sprite.groupcollide(mobs, goal, False, False)
-        if win:
-            print("You Win!")
-            level = terrain2
-            fox.x = 32
-            fox.y = 32*17
-            sky = black
         for event in pygame.event.get():
             log.debug(event)
             if event.type == pygame.QUIT:
@@ -140,6 +130,18 @@ def run():
             fox.y = 0
         if fox.y > display_height - fox.rect.height:
             fox.y = display_height - fox.rect.height
+
+        collisions = pygame.sprite.groupcollide(mobs, level, False, False)
+        if collisions:
+            log.info(collisions)
+
+        win = pygame.sprite.groupcollide(mobs, goal, False, False)
+        if win:
+            print("You Win!")
+            level = terrain2
+            fox.x = 32
+            fox.y = 32*17
+            sky = black
 
         game_display.fill(sky)
         mobs.draw(game_display)
