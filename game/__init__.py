@@ -69,17 +69,6 @@ goal.add(
 sky = sky_blue
 level = terrain1
 
-
-def display_image(img, pos):
-    game_display.blit(img, grid(pos))
-
-
-def display_map(map):
-    for image, coords in map.items():
-        for coord in coords:
-            display_image(image, coord)
-
-
 # Game loop
 game_exit = False
 
