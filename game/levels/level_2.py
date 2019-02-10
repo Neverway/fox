@@ -1,0 +1,27 @@
+from game.models import Stone
+
+terrain = [
+    Stone(0, 18),
+    Stone(1, 18),
+    Stone(2, 18),
+    Stone(3, 18),
+    Stone(4, 18),
+    Stone(5, 18),
+    Stone(6, 18),
+    Stone(7, 18),
+    Stone(8, 18),
+    Stone(9, 18),
+    Stone(10, 18),
+    Stone(11, 18),
+    Stone(12, 18),
+    Stone(13, 18),
+    Stone(14, 18),
+    Stone(15, 18),
+    Stone(18, 18),
+    Stone(19, 18),
+    Stone(20, 18),
+    Stone(21, 18),
+    Stone(22, 18),
+    Stone(23, 18),
+    Stone(24, 18),
+]
