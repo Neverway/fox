@@ -20,6 +20,7 @@ from game.models import (
     Tree,
 )
 from game.utils import grid
+from game.levels import level_1
 
 log = logging.getLogger(__name__)
 logging.basicConfig(level=logging.DEBUG)
@@ -52,33 +53,7 @@ mobs.add(
 )
 
 terrain1 = pygame.sprite.Group()
-terrain1.add(
-    Grass(0, 18),
-    Grass(1, 18),
-    Grass(2, 18),
-    Grass(3, 18),
-    Grass(4, 18),
-    Grass(5, 18),
-    Grass(6, 18),
-    Grass(7, 18),
-    Grass(8, 18),
-    Grass(9, 18),
-    Grass(10, 18),
-    Grass(11, 18),
-    Grass(12, 18),
-    Grass(13, 18),
-    Grass(14, 18),
-    Grass(15, 18),
-    Grass(18, 18),
-    Grass(19, 18),
-    Grass(20, 18),
-    Grass(21, 18),
-    Grass(22, 18),
-    Grass(23, 18),
-    Grass(24, 18),
-    Stone(3, 17),
-    Dirt(5, 17),
-)
+terrain1.add(*level_1.terrain)
 
 terrain2 = pygame.sprite.Group()
 terrain2.add(
