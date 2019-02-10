@@ -2,7 +2,15 @@ import logging
 
 import pygame
 
-from game.constants import Direction
+from game.constants import (
+    Direction,
+    black,
+    blue,
+    green,
+    red,
+    sky_blue,
+    white,
+)
 from game.models import (
     Box,
     Dirt,
@@ -33,25 +41,15 @@ pygame.display.set_caption('Fox in a box')
 window_icon = pygame.image.load('game.png')
 pygame.display.set_icon(window_icon)
 
-# Define colors
-black = (0, 0, 0)
-white = (255, 255, 255)
-red = (255, 0, 0)
-green = (0, 255, 0)
-blue = (0, 0, 255)
-sky_blue = (125, 125, 255)
-
 # Add clock
 clock = pygame.time.Clock()
 framerate = 60
-
 
 fox = Fox(*grid(0, 16))
 mobs = pygame.sprite.Group()
 mobs.add(
     fox,
 )
-
 
 terrain1 = pygame.sprite.Group()
 terrain1.add(
