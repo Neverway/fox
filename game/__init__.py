@@ -23,10 +23,22 @@ from game.models import (
     Stone,
     Tree,
 )
+from game.physics import (
+    displacement,
+    distance,
+)
 from game.utils import grid
 
 log = logging.getLogger(__name__)
 logging.basicConfig(level=logging.DEBUG)
+
+
+def ground_clamp(mob, collisions):
+    lowest_surface = max(
+        collisions,
+        key=lambda x: x.rect.top,
+    )
+    return min(mob.rect.bottom, lowest_surface.rect.top)
 
 
 def run():
@@ -81,16 +93,6 @@ def run():
     gravity = -5
 
     while not game_exit:
-        collisions = pygame.sprite.groupcollide(mobs, level, False, False)
-        # if collisions:
-        #     log.info(collisions)
-        win = pygame.sprite.groupcollide(mobs, goal, False, False)
-        if win:
-            print("You Win!")
-            level = terrain2
-            fox.x = 32
-            fox.y = 32*17
-            sky = black
         for event in pygame.event.get():
             log.debug(event)
             if event.type == pygame.QUIT:
@@ -131,6 +133,21 @@ def run():
             fox.y = 0
         if fox.y > display_height - fox.rect.height:
             fox.y = display_height - fox.rect.height
+
+        collisions = pygame.sprite.groupcollide(mobs, level, False, False)
+        if collisions:
+            log.info(collisions)
+
+        for mob in collisions:
+            mob.rect.bottom = ground_clamp(mob, collisions[mob])
+
+        win = pygame.sprite.groupcollide(mobs, goal, False, False)
+        if win:
+            print("You Win!")
+            level = terrain2
+            fox.x = 32
+            fox.y = 32*17
+            sky = black
 
         game_display.fill(sky)
         mobs.draw(game_display)
