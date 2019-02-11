@@ -75,8 +75,8 @@ class Tree(Block):
     image = pygame.image.load('sprites/environment/forest/tree.png')
 
 
-class Cloud(Block):
-    image = pygame.image.load('sprites/environment/forest/cloud.png')
+#class Cloud(Block):
+    #image = pygame.image.load('sprites/environment/forest/cloud.png')
 
 
 class Spike(Block):

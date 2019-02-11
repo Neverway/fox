@@ -15,6 +15,10 @@ from game.levels import (
     level_1,
     level_2,
     level_3,
+    level_5,
+    #level_5,
+    #level_6,
+
 )
 from game.models import (
     Box,
@@ -23,7 +27,7 @@ from game.models import (
     Grass,
     Stone,
     Tree,
-    Cloud
+    Poison
 )
 from game.physics import (
     displacement,
@@ -79,6 +83,9 @@ def run():
 
     terrain3 = pygame.sprite.Group()
     terrain3.add(*level_3.terrain)
+
+    terrain4 = pygame.sprite.Group()
+    terrain4.add(*level_5.terrain)
 
     goal = pygame.sprite.Group()
     goal.add(
@@ -170,6 +177,14 @@ def run():
                 fox.y = 32*17
                 sky = black
                 next_level = 4
+            elif next_level == 4:
+                print("Next level")
+                level = terrain4
+                fox.x = 32
+                fox.y = 32*17
+                sky = black
+                next_level = 5
+
 
         game_display.fill(sky)
         mobs.draw(game_display)
