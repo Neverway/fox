@@ -22,6 +22,7 @@ from game.models import (
     Grass,
     Stone,
     Tree,
+    Cloud
 )
 from game.physics import (
     displacement,
