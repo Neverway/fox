@@ -14,6 +14,7 @@ from game.constants import (
 from game.levels import (
     level_1,
     level_2,
+    level_3,
 )
 from game.models import (
     Box,
@@ -75,6 +76,9 @@ def run():
 
     terrain2 = pygame.sprite.Group()
     terrain2.add(*level_2.terrain)
+
+    terrain3 = pygame.sprite.Group()
+    terrain3.add(*level_3.terrain)
 
     goal = pygame.sprite.Group()
     goal.add(
@@ -150,7 +154,7 @@ def run():
         win = pygame.sprite.groupcollide(mobs, goal, False, False)
         if win:
             print("You Win!")
-            level = terrain2
+            level = terrain3
             fox.x = 32
             fox.y = 32*17
             sky = black
