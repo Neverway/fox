@@ -86,7 +86,9 @@ def run():
     )
 
     sky = sky_blue
+
     level = terrain1
+    next_level = 2
 
     # Game loop
     game_exit = False
@@ -99,7 +101,7 @@ def run():
 
     while not game_exit:
         for event in pygame.event.get():
-            log.debug(event)
+            # log.debug(event)
             if event.type == pygame.QUIT:
                 game_exit = True
 
@@ -146,18 +148,28 @@ def run():
 
         collisions = pygame.sprite.groupcollide(mobs, level, False, False)
         if collisions:
-            log.info(collisions)
+            pass
+            # log.info(collisions)
 
         for mob in collisions:
             mob.rect.bottom = ground_clamp(mob, collisions[mob])
 
         win = pygame.sprite.groupcollide(mobs, goal, False, False)
         if win:
-            print("You Win!")
-            level = terrain3
-            fox.x = 32
-            fox.y = 32*17
-            sky = black
+            if next_level == 2:
+                print("Next level")
+                level = terrain2
+                fox.x = 32
+                fox.y = 32*17
+                sky = black
+                next_level = 3
+            elif next_level == 3:
+                print("Next level")
+                level = terrain3
+                fox.x = 32
+                fox.y = 32*17
+                sky = black
+                next_level = 4
 
         game_display.fill(sky)
         mobs.draw(game_display)
