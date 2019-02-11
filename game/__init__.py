@@ -23,6 +23,10 @@ from game.models import (
     Stone,
     Tree,
 )
+from game.physics import (
+    displacement,
+    distance,
+)
 from game.utils import grid
 
 log = logging.getLogger(__name__)
