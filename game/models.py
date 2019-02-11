@@ -13,6 +13,22 @@ class Block(Sprite):
         self.rect = self.image.get_rect()
         self.rect.move_ip(*grid(x, y))
 
+    @property
+    def x(self):
+        return self.rect.x
+
+    @x.setter
+    def x(self, value):
+        self.rect.x = value
+
+    @property
+    def y(self):
+        return self.rect.y
+
+    @y.setter
+    def y(self, value):
+        self.rect.y = value
+
 
 class Box(Block):
     image = pygame.image.load('sprites/environment/other/box.png')
@@ -34,32 +50,14 @@ class Tree(Block):
     image = pygame.image.load('sprites/environment/forest/tree.png')
 
 
-class Mob(pygame.sprite.Sprite):
+class Mob(Block):
     base_image = pygame.image.load('sprites/missing.png')
 
     def __init__(self, x, y):
-        super().__init__()
+        self.facing = Direction.right
         self.image_right = self.base_image
         self.image_left = pygame.transform.flip(self.base_image, True, False)
-        self.rect = self.base_image.get_rect()
-        self.rect.move_ip(x, y)
-        self.facing = Direction.right
-
-    @property
-    def x(self):
-        return self.rect.x
-
-    @x.setter
-    def x(self, value):
-        self.rect.x = value
-
-    @property
-    def y(self):
-        return self.rect.y
-
-    @y.setter
-    def y(self, value):
-        self.rect.y = value
+        super().__init__(x, y)
 
     @property
     def image(self):
