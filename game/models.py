@@ -75,3 +75,14 @@ class Fox(Mob):
     base_image = pygame.transform.scale2x(
         pygame.image.load('sprites/entities/fox/fox_base.png')
     )
+
+
+ASCII_MAP = {
+    'G': Grass,
+    'D': Dirt,
+    'S': Stone,
+    'B': Box,
+    'F': Fox,
+    'T': Tree,
+    '.': None,
+}
