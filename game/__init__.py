@@ -34,8 +34,11 @@ logging.basicConfig(level=logging.DEBUG)
 
 
 def ground_clamp(mob, collisions):
-    surfaces = (item.rect.top for item in collisions)
-    return min(mob.rect.bottom, *surfaces)
+    lowest_surface = max(
+        collisions,
+        key=lambda x: x.rect.top,
+    )
+    return min(mob.rect.bottom, lowest_surface.rect.top)
 
 
 def run():
@@ -134,6 +137,9 @@ def run():
         collisions = pygame.sprite.groupcollide(mobs, level, False, False)
         if collisions:
             log.info(collisions)
+
+        for mob in collisions:
+            mob.rect.bottom = ground_clamp(mob, collisions[mob])
 
         win = pygame.sprite.groupcollide(mobs, goal, False, False)
         if win:
