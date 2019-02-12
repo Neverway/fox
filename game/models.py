@@ -118,6 +118,10 @@ class Fox(Mob):
     )
 
 
+class Missing(Block):
+    image = pygame.image.load('sprites/missing.png')
+
+
 ASCII_MAP = {
     'G': Grass,
     'D': Dirt,
@@ -130,4 +134,5 @@ ASCII_MAP = {
     'P': Poison,
     'V': Trap,
     '.': None,
+    '?': Missing,
 }
