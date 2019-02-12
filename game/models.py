@@ -75,6 +75,10 @@ class Tree(Block):
     image = pygame.image.load('sprites/environment/forest/tree.png')
 
 
+class Truck(Block):
+    image = pygame.image.load('sprites/environment/other/truck.png')
+
+
 #class Cloud(Block):
     #image = pygame.image.load('sprites/environment/forest/cloud.png')
 
@@ -119,6 +123,7 @@ ASCII_MAP = {
     'D': Dirt,
     'S': Stone,
     'B': Box,
+    'K': Truck,
     'F': Fox,
     'T': Tree,
     'X': Spike,
