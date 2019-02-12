@@ -8,6 +8,7 @@ red = (255, 0, 0)
 green = (0, 255, 0)
 blue = (0, 0, 255)
 sky_blue = (125, 125, 255)
+void = (125, 0, 100)
 
 
 # Set character direction

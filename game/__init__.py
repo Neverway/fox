@@ -10,8 +10,10 @@ from game.constants import (
     red,
     sky_blue,
     white,
+    void,
 )
 from game.levels import (
+    level_0,
     level_1,
     level_2,
     level_3,
@@ -90,6 +92,9 @@ def run():
     terrain5 = pygame.sprite.Group()
     terrain5.add(*level_5.terrain)
 
+    terrain0 = pygame.sprite.Group()
+    terrain0.add(*level_0.terrain)
+
     goal = pygame.sprite.Group()
     goal.add(
         Box(23, 17),
@@ -98,7 +103,7 @@ def run():
     sky = sky_blue
 
     level = terrain1
-    next_level = 2
+    next_level = 0
 
     # Game loop
     game_exit = False
@@ -193,6 +198,13 @@ def run():
                 fox.x = 32
                 fox.y = 32*17
                 sky = black
+                next_level = 0
+            elif next_level == 0:
+                print("Next level")
+                level = terrain0
+                fox.x = 32
+                fox.y = 32*17
+                sky = void
                 next_level = 6
 
         game_display.fill(sky)
