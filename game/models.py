@@ -87,6 +87,10 @@ class Poison(Block):
     image = pygame.image.load('sprites/hostile/poison.png')
 
 
+class Trap(Block):
+    image = pygame.image.load('sprites/hostile/bear_trap.png')
+
+
 class Mob(Block):
     base_image = pygame.image.load('sprites/missing.png')
 
@@ -119,5 +123,6 @@ ASCII_MAP = {
     'T': Tree,
     'X': Spike,
     'P': Poison,
+    'V': Trap,
     '.': None,
 }
