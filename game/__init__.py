@@ -17,7 +17,7 @@ from game.levels import (
     level_3,
     level_4,
     level_5,
-    #level_6,
+    # level_6,
 
 )
 from game.models import (
@@ -194,7 +194,6 @@ def run():
                 fox.y = 32*17
                 sky = black
                 next_level = 6
-
 
         game_display.fill(sky)
         mobs.draw(game_display)
