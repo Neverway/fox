@@ -83,8 +83,12 @@ class Truck(Block):
     #image = pygame.image.load('sprites/environment/forest/cloud.png')
 
 
-class Spike(Block):
+class Floor_Spike(Block):
     image = pygame.image.load('sprites/hostile/spike.png')
+
+
+class Roof_Spike(Block):
+    image = pygame.image.load('sprites/hostile/spike_roof.png')
 
 
 class Poison(Block):
@@ -130,9 +134,10 @@ ASCII_MAP = {
     'K': Truck,
     'F': Fox,
     'T': Tree,
-    'X': Spike,
+    '^': Floor_Spike,
+    'V': Roof_Spike,
     'P': Poison,
-    'V': Trap,
+    'X': Trap,
     '.': None,
     '?': Missing,
 }

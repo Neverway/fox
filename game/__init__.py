@@ -21,6 +21,7 @@ from game.levels import (
     level_5,
     level_6,
     level_7,
+    level_8,
 
 )
 from game.models import (
@@ -98,6 +99,9 @@ def run():
 
     terrain7 = pygame.sprite.Group()
     terrain7.add(*level_7.terrain)
+
+    terrain8 = pygame.sprite.Group()
+    terrain8.add(*level_8.terrain)
 
     terrain0 = pygame.sprite.Group()
     terrain0.add(*level_0.terrain)
@@ -216,6 +220,13 @@ def run():
             elif next_level == 7:
                 print("Next level")
                 level = terrain7
+                fox.x = 32
+                fox.y = 32*17
+                sky = black
+                next_level = 8
+            elif next_level == 8:
+                print("Next level")
+                level = terrain8
                 fox.x = 32
                 fox.y = 32*17
                 sky = black
